@@ -11,14 +11,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style1.css">
 </head>
 <body>  
 
 <?php
 // define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
+$nameErr = $emailErr = $genderErr =  $contactErr = $licenseErr= $dobErr="";
+$name = $email = $gender = $contact= $license =$dob="";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
@@ -31,18 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["email"]);
-  }
-    
-  if (empty($_POST["website"])) {
-    $website = "";
-  } else {
-    $website = test_input($_POST["website"]);
-  }
-
-  if (empty($_POST["comment"])) {
-    $comment = "";
-  } else {
-    $comment = test_input($_POST["comment"]);
   }
 
   if (empty($_POST["gender"])) {
@@ -59,15 +47,15 @@ function test_input($data) {
   return $data;
 }
 ?>
-
-<h2>Form Validation with HTML, Javascript, PHP</h2>
+<br>
+<h2>Government of Canada Employment form</h2> <br><br>
 <div class="container">
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 <!-- One field start -->
 <div class="row">
     <div class="col-25">
-    <label for="fname">Name</label>
+    <label for="fname">Name</label> 
     </div>
     
     <div class="col-75">
@@ -76,11 +64,11 @@ function test_input($data) {
     </div>
 </div>
 <!-- end -->
-  <br><br>
+  
 <!-- 2 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="email">Email</label>
+    <label for="email">Email</label> 
     </div>
     <div class="col-75">
     <input type="text" name="email">
@@ -88,24 +76,59 @@ function test_input($data) {
     </div>
 </div>
 <!-- end -->
-  <br><br>
+  
+<!-- 3 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="contact">Contact No</label> 
+    </div>
+    <div class="col-75">
+    <input type="tel" name="contact">
+    <span class="error">* <?php echo $contactErr;?></span> 
+    </div>
+</div>
+<!-- end -->
 
-  <!-- 3 field start -->
+  <!-- 4 field start -->
 <div class="row">
     <div class="col-25">
     <label for="gender">Gender</label>
     </div>
     <div class="col-75">
-    <input type="radio" name="gender" value="female">Female
+    <input type="radio" name="gender" value="female">Female 
     <input type="radio" name="gender" value="male">Male
-    <input type="radio" name="gender" value="other">Other
+    <input type="radio" name="gender" value="other">Other 
     <span class="error">* <?php echo $genderErr;?></span>
  </div>
 </div>
 <!-- end -->
-  
+
+<!-- 5 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="licenseno">Driver License No.</label>
+    </div>
+    <div class="col-75">
+    <input type="text" name="licenseno">
+    <span class="error">* <?php echo $licenseErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 6 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="dob">Date of Birth</label>
+    </div>
+    <div class="col-75">
+    <input type="date" name="dob">
+    <span class="error">* <?php echo $dobErr;?></span>
+ </div>
+</div>
+<!-- end -->
   <br><br>
-  <!-- 4 field start -->
+  
+  <!-- 13 field start -->
   <div class="row">
     
     <input type="submit" name="submit" value="Submit">  
@@ -122,11 +145,13 @@ echo $name;
 echo "<br>";
 echo $email;
 echo "<br>";
-echo $website;
-echo "<br>";
-echo $comment;
+echo $contact;
 echo "<br>";
 echo $gender;
+echo "<br>";
+echo $license;
+echo "<br>";
+echo $dob;
 ?>
 
 </body>
