@@ -109,7 +109,7 @@ function test_input($data) {
     <label for="licenseno">Driver License No.</label>
     </div>
     <div class="col-75">
-    <input type="text" name="licenseno">
+    <input type="text" name="licenseno" pattern= "[A-Z]{1}[0-9]{4}-[0-9]{5}-[0-9]{5}" size="15" placeholder="Enter Driver's License Number">
     <span class="error">* <?php echo $licenseErr;?></span>
  </div>
 </div>
@@ -121,7 +121,7 @@ function test_input($data) {
     <label for="dob">Date of Birth</label>
     </div>
     <div class="col-75">
-    <input type="date" name="dob">
+    <input type="date" name="dob" placeholder="Enter your Date of Birth" max="2004-12-31" min="1970-01-02">
     <span class="error">* <?php echo $dobErr;?></span>
  </div>
 </div>
@@ -133,7 +133,7 @@ function test_input($data) {
     <label for="password1">Password </label>
     </div>
     <div class="col-75">
-    <input type="password" name="password1" >
+    <input type="password" name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
     <span class="error">* <?php echo $passwordErr;?></span>
  </div>
 </div>
@@ -145,7 +145,7 @@ function test_input($data) {
     <label for="confpassword">Confirm Password </label>
     </div>
     <div class="col-75">
-    <input type="password" name="confpassword" >
+    <input type="password" name="confpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
     <span class="error">* <?php echo $confpasswordErr;?></span>
  </div>
 </div>
