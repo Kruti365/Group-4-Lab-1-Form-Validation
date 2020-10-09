@@ -133,7 +133,7 @@ function test_input($data) {
     <label for="password1">Password </label>
     </div>
     <div class="col-75">
-    <input type="password" name="password1">
+    <input type="password" name="password1" >
     <span class="error">* <?php echo $passwordErr;?></span>
  </div>
 </div>
@@ -145,7 +145,7 @@ function test_input($data) {
     <label for="confpassword">Confirm Password </label>
     </div>
     <div class="col-75">
-    <input type="password" name="confpassword">
+    <input type="password" name="confpassword" >
     <span class="error">* <?php echo $confpasswordErr;?></span>
  </div>
 </div>
@@ -157,7 +157,7 @@ function test_input($data) {
     <label for="postalcode">Postal Code</label>
     </div>
     <div class="col-75">
-    <input type="text" name="postalcode">
+    <input type="text" name="postalcode" pattern= "[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]">
     <span class="error">* <?php echo $postalcodeErr;?></span>
  </div>
 </div>
@@ -169,7 +169,7 @@ function test_input($data) {
     <label for="uploadresume">Upload your Resume</label>
     </div>
     <div class="col-75">
-    <input type="file" name="uploadresume">
+    <input type="file" name="uploadresume" accept=".doc,.docx,application/msword">
     <span class="error">* <?php echo $uploadresumeErr;?></span>
  </div>
 </div>
@@ -181,19 +181,20 @@ function test_input($data) {
     <label for="uploadgovernid">Upload your Government ID</label>
     </div>
     <div class="col-75">
-    <input type="file" name="uploadgovernid">
+    <input type="file" name="uploadgovernid" accept=".jpeg,.jpg,.png">
     <span class="error">* <?php echo $uploadgovernidErr;?></span>
  </div>
 </div>
-<!-- end -->
+<!-- end --> 
 
-
+<!-- 12 field start -->
 <div class="row">
     <div class="col-25">
 <label for="roles">Roles</label>
 </div>
     <div class="col-75">
-  <select id="roles" name="roles">
+  <select required id="roles" name="roles">
+  <option value="">Select an option</option>
     <option value="parttime">Part-time</option>
     <option value="fulltime">Full-time</option>
     <option value="seasonal">Seasonal</option>
