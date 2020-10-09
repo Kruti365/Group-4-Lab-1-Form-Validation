@@ -28,7 +28,9 @@
   input[type=submit]:hover {
     background-color: #45a049;
   }
-  
+  .error {
+    color: #FF0000;
+  }
   .container {
     border-radius: 5px;
     background-color: #f2f2f2;

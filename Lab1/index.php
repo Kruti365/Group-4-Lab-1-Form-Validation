@@ -1,7 +1,17 @@
 <!DOCTYPE HTML>  
 <html>
 <head>
-<link rel="stylesheet" href="style.css">
+<style>
+.error {
+  color:red;
+}
+</style>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>  
 
@@ -50,7 +60,7 @@ function test_input($data) {
 }
 ?>
 
-<h2>PHP Form Validation Example</h2>
+<h2>Form Validation with HTML, Javascript, PHP</h2>
 <div class="container">
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
@@ -78,32 +88,9 @@ function test_input($data) {
     </div>
 </div>
 <!-- end -->
- <!-- 3 field start -->
-<div class="row">
-    <div class="col-25">
-    <label for="website">Website</label>
-    </div>
-    <div class="col-75">
-    <input type="text" name="website">
-    <span class="error"><?php echo $websiteErr;?></span>
-    </div>
-</div>
-<!-- end -->
-  <br><br>
-<!-- 4 field start -->
-<div class="row">
-    <div class="col-25">
-    <label for="comment">Comment</label>
-    </div>
-    <div class="col-75">
-    <textarea name="comment" rows="5" cols="40"></textarea>
-
-    </div>
-</div>
-<!-- end -->
   <br><br>
 
-  <!-- 5 field start -->
+  <!-- 3 field start -->
 <div class="row">
     <div class="col-25">
     <label for="gender">Gender</label>
@@ -118,7 +105,7 @@ function test_input($data) {
 <!-- end -->
   
   <br><br>
-  <!-- 6 field start -->
+  <!-- 4 field start -->
   <div class="row">
     
     <input type="submit" name="submit" value="Submit">  
