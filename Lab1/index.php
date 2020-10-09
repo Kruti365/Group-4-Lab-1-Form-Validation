@@ -103,29 +103,7 @@ function test_input($data) {
 </div>
 <!-- end -->
 
-<!-- 5 field start -->
-<div class="row">
-    <div class="col-25">
-    <label for="licenseno">Driver License No.</label>
-    </div>
-    <div class="col-75">
-    <input type="text" name="licenseno">
-    <span class="error">* <?php echo $licenseErr;?></span>
- </div>
-</div>
-<!-- end -->
 
-<!-- 6 field start -->
-<div class="row">
-    <div class="col-25">
-    <label for="dob">Date of Birth</label>
-    </div>
-    <div class="col-75">
-    <input type="date" name="dob">
-    <span class="error">* <?php echo $dobErr;?></span>
- </div>
-</div>
-<!-- end -->
   <br><br>
   
   <!-- 13 field start -->
