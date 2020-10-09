@@ -2,7 +2,16 @@
     box-sizing: border-box;
   }
   
-  input[type=text], select, textarea {
+  body {
+      background-image: url("bgimg.jpg");
+  }
+
+  h2{
+    text-align: center;
+    color: white;
+  }
+
+  input[type=text], select, textarea,[type=tel],[type=date] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -16,44 +25,51 @@
   }
   
   input[type=submit] {
-    background-color: #4CAF50;
+    background-color: #f51b38;
     color: white;
-    padding: 12px 20px;
+    padding: 14px 40px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right;
+    float: center;
+    width: 100%;
   }
   
   input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #CD5C5C;
   }
   .error {
     color: #FF0000;
   }
   .container {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: white;
     padding: 20px;
   }
   
   .col-25 {
-    float: left;
+    float:center;
     width: 25%;
+    font-family:  'David Libre', serif;;
+    font-size: large;
     margin-top: 6px;
   }
   
   .col-75 {
     float: left;
-    width: 75%;
+    width: 100%;
+    font-family:  'David Libre', serif;;
+    font-size: large;
     margin-top: 6px;
   }
   
   /* Clear floats after the columns */
   .row:after {
     content: "";
-    display: table;
+    display:table;
     clear: both;
+    
+    
   }
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
