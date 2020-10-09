@@ -102,6 +102,53 @@ function test_input($data) {
  </div>
 </div>
 <!-- end -->
+<!-- 5 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="licenseno">Driver License No.</label>
+    </div>
+    <div class="col-75">
+    <input type="text" name="licenseno">
+    <span class="error">* <?php echo $licenseErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 6 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="dob">Date of Birth</label>
+    </div>
+    <div class="col-75">
+    <input type="date" name="dob">
+    <span class="error">* <?php echo $dobErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 7 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="password1">Password </label>
+    </div>
+    <div class="col-75">
+    <input type="password" name="password1">
+    <span class="error">* <?php echo $passwordErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 8 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="confpassword">Confirm Password </label>
+    </div>
+    <div class="col-75">
+    <input type="password" name="confpassword">
+    <span class="error">* <?php echo $confpasswordErr;?></span>
+ </div>
+</div>
+<!-- end -->
 
 
   <br><br>
