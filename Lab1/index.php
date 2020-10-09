@@ -17,8 +17,8 @@
 
 <?php
 // define variables and set to empty values
-$nameErr = $emailErr = $genderErr =  $contactErr = $licenseErr= $dobErr="";
-$name = $email = $gender = $contact= $license =$dob="";
+$nameErr = $emailErr = $genderErr =  $contactErr = $licenseErr= $dobErr= $passwordErr= $confpasswordErr= $postalcodeErr= $uploadresumeErr= $uploadgovernidErr= $rolesErr="";
+$name = $email = $gender = $contact= $license =$dob= $password1= $confpassword= $postalcode= $uploadresume= $uploadgovernid= $roles="";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
@@ -50,7 +50,7 @@ function test_input($data) {
 <br>
 <h2>Government of Canada Employment form</h2> <br><br>
 <div class="container">
-<p><span class="error">* required field</span></p>
+<p><span class="error">* Required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 <!-- One field start -->
 <div class="row">
@@ -126,6 +126,81 @@ function test_input($data) {
  </div>
 </div>
 <!-- end -->
+
+<!-- 7 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="password1">Password </label>
+    </div>
+    <div class="col-75">
+    <input type="password" name="password1">
+    <span class="error">* <?php echo $passwordErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 8 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="confpassword">Confirm Password </label>
+    </div>
+    <div class="col-75">
+    <input type="password" name="confpassword">
+    <span class="error">* <?php echo $confpasswordErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 9 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="postalcode">Postal Code</label>
+    </div>
+    <div class="col-75">
+    <input type="text" name="postalcode">
+    <span class="error">* <?php echo $postalcodeErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 10 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="uploadresume">Upload your Resume</label>
+    </div>
+    <div class="col-75">
+    <input type="file" name="uploadresume">
+    <span class="error">* <?php echo $uploadresumeErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+<!-- 11 field start -->
+<div class="row">
+    <div class="col-25">
+    <label for="uploadgovernid">Upload your Government ID</label>
+    </div>
+    <div class="col-75">
+    <input type="file" name="uploadgovernid">
+    <span class="error">* <?php echo $uploadgovernidErr;?></span>
+ </div>
+</div>
+<!-- end -->
+
+
+<div class="row">
+    <div class="col-25">
+<label for="roles">Roles</label>
+</div>
+    <div class="col-75">
+  <select id="roles" name="roles">
+    <option value="parttime">Part-time</option>
+    <option value="fulltime">Full-time</option>
+    <option value="seasonal">Seasonal</option>
+  </select>
+  <span class="error">* <?php echo $rolesErr;?></span>
+  </div>
+</div>
   <br><br>
   
   <!-- 13 field start -->
@@ -152,6 +227,19 @@ echo "<br>";
 echo $license;
 echo "<br>";
 echo $dob;
+echo "<br>";
+echo $password;
+echo "<br>";
+echo $confpassword;
+echo "<br>";
+echo $postalcode;
+echo "<br>";
+echo $uploadresume;
+echo "<br>";
+echo $uploadgovernid;
+echo "<br>";
+echo $roles;
+echo "br>";
 ?>
 
 </body>

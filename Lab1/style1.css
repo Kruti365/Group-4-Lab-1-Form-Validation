@@ -11,7 +11,15 @@
     color: white;
   }
 
-  input[type=text], select, textarea,[type=tel],[type=date] {
+  input[type=text], select, textarea,[type=tel],[type=date],[type=password],[type=file]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+  input[type=password] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -34,6 +42,8 @@
     float: center;
     width: 100%;
   }
+
+  
   
   input[type=submit]:hover {
     background-color: #CD5C5C;
