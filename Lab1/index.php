@@ -53,26 +53,29 @@ function test_input($data) {
 <p><span class="error">* Required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 <!-- One field start -->
+
 <div class="row">
-    <div class="col-25">
-    <label for="fname">Name</label> 
+ 
+   <div class="col-25">
+    <label for="fname">Name</label> <span class="error">* <?php echo $nameErr;?></span>
     </div>
-    
+  
     <div class="col-75">
-    <input type="text" name="name">
-        <span class="error">* <?php echo $nameErr;?></span> 
+    <input type="text"  name="name"  pattern="[A-Za-z]{5,}" placeholder="Enter your first name" autofocus required>
+         
     </div>
+
 </div>
 <!-- end -->
   
 <!-- 2 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="email">Email</label> 
+    <label for="email">Email</label> <span class="error">* <?php echo $emailErr;?></span> 
     </div>
     <div class="col-75">
-    <input type="text" name="email">
-    <span class="error">* <?php echo $emailErr;?></span> 
+    <input type="text" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter your Email address" required>
+    
     </div>
 </div>
 <!-- end -->
@@ -80,11 +83,11 @@ function test_input($data) {
 <!-- 3 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="contact">Contact No</label> 
+    <label for="contact">Contact No</label> <span class="error">* <?php echo $contactErr;?></span>
     </div>
-    <div class="col-75">
-    <input type="tel" name="contact">
-    <span class="error">* <?php echo $contactErr;?></span> 
+    <div class="col-75" >
+    <input type="tel"  name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Enter your Contact No" size="10" required>
+     
     </div>
 </div>
 <!-- end -->
@@ -92,13 +95,13 @@ function test_input($data) {
   <!-- 4 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="gender">Gender</label>
+    <label for="gender">Gender</label><span class="error">* <?php echo $genderErr;?></span>
     </div>
     <div class="col-75">
     <input type="radio" name="gender" value="female">Female 
     <input type="radio" name="gender" value="male">Male
     <input type="radio" name="gender" value="other">Other 
-    <span class="error">* <?php echo $genderErr;?></span>
+    
  </div>
 </div>
 <!-- end -->
@@ -106,11 +109,11 @@ function test_input($data) {
 <!-- 5 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="licenseno">Driver License No.</label>
+    <label for="licenseno">Driver License No.</label> <span class="error">* <?php echo $licenseErr;?></span>
     </div>
     <div class="col-75">
     <input type="text" name="licenseno" pattern= "[A-Z]{1}[0-9]{4}-[0-9]{5}-[0-9]{5}" size="15" placeholder="Enter Driver's License Number">
-    <span class="error">* <?php echo $licenseErr;?></span>
+   
  </div>
 </div>
 <!-- end -->
@@ -118,11 +121,11 @@ function test_input($data) {
 <!-- 6 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="dob">Date of Birth</label>
+    <label for="dob">Date of Birth</label><span class="error">* <?php echo $dobErr;?></span>
     </div>
     <div class="col-75">
     <input type="date" name="dob" placeholder="Enter your Date of Birth" max="2004-12-31" min="1970-01-02">
-    <span class="error">* <?php echo $dobErr;?></span>
+    
  </div>
 </div>
 <!-- end -->
@@ -130,11 +133,11 @@ function test_input($data) {
 <!-- 7 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="password1">Password </label>
+    <label for="password1">Password </label><span class="error">* <?php echo $passwordErr;?></span>
     </div>
     <div class="col-75">
-    <input type="password" name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
-    <span class="error">* <?php echo $passwordErr;?></span>
+    <input type="password" name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
+    
  </div>
 </div>
 <!-- end -->
@@ -142,11 +145,11 @@ function test_input($data) {
 <!-- 8 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="confpassword">Confirm Password </label>
+    <label for="confpassword">Confirm Password </label><span class="error">* <?php echo $confpasswordErr;?></span>
     </div>
     <div class="col-75">
-    <input type="password" name="confpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
-    <span class="error">* <?php echo $confpasswordErr;?></span>
+    <input type="password" name="confpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirm Your Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
+    
  </div>
 </div>
 <!-- end -->
@@ -154,11 +157,11 @@ function test_input($data) {
 <!-- 9 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="postalcode">Postal Code</label>
+    <label for="postalcode">Postal Code</label> <span class="error">* <?php echo $postalcodeErr;?></span>
     </div>
     <div class="col-75">
-    <input type="text" name="postalcode" pattern= "[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]">
-    <span class="error">* <?php echo $postalcodeErr;?></span>
+    <input type="text" name="postalcode" placeholder="Enter your Postal Code" pattern= "[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]">
+   
  </div>
 </div>
 <!-- end -->
@@ -166,11 +169,11 @@ function test_input($data) {
 <!-- 10 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="uploadresume">Upload your Resume</label>
+    <label for="uploadresume">Upload your Resume</label> <span class="error">* <?php echo $uploadresumeErr;?></span>
     </div>
     <div class="col-75">
     <input type="file" name="uploadresume" accept=".doc,.docx,application/msword">
-    <span class="error">* <?php echo $uploadresumeErr;?></span>
+   
  </div>
 </div>
 <!-- end -->
@@ -178,11 +181,11 @@ function test_input($data) {
 <!-- 11 field start -->
 <div class="row">
     <div class="col-25">
-    <label for="uploadgovernid">Upload your Government ID</label>
+    <label for="uploadgovernid">Upload your Government ID</label> <span class="error">* <?php echo $uploadgovernidErr;?></span>
     </div>
     <div class="col-75">
     <input type="file" name="uploadgovernid" accept=".jpeg,.jpg,.png">
-    <span class="error">* <?php echo $uploadgovernidErr;?></span>
+   
  </div>
 </div>
 <!-- end --> 
@@ -190,7 +193,7 @@ function test_input($data) {
 <!-- 12 field start -->
 <div class="row">
     <div class="col-25">
-<label for="roles">Roles</label>
+<label for="roles">Roles</label><span class="error">* <?php echo $rolesErr;?></span>
 </div>
     <div class="col-75">
   <select required id="roles" name="roles">
@@ -199,7 +202,7 @@ function test_input($data) {
     <option value="fulltime">Full-time</option>
     <option value="seasonal">Seasonal</option>
   </select>
-  <span class="error">* <?php echo $rolesErr;?></span>
+  
   </div>
 </div>
   <br><br>

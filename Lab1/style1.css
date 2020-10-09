@@ -43,7 +43,15 @@
     width: 100%;
   }
 
-  
+::-webkit-file-upload-button {
+    background: #f51b38;
+    color: white;
+    padding: 10px;
+    width: 20%;
+    resize: vertical;
+    
+    
+  }
   
   input[type=submit]:hover {
     background-color: #CD5C5C;
