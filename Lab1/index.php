@@ -2,43 +2,53 @@
 <html>
 <head>
 <style>
-.error {
-  color:red;
-}
+
 </style>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
   <link rel="stylesheet" href="style1.css">
+  
 </head>
 <body>  
 
 <?php
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr =  $contactErr = $licenseErr= $dobErr= $passwordErr= $confpasswordErr= $postalcodeErr= $uploadresumeErr= $uploadgovernidErr= $rolesErr="";
-$name = $email = $gender = $contact= $license =$dob= $password1= $confpassword= $postalcode= $uploadresume= $uploadgovernid= $roles="";
+$name = $email = $gender = $contact= $licenseno =$dob= $password1= $confpassword= $postalcode= $uploadresume= $uploadgovernid= $roles="";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
     $name = test_input($_POST["name"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+      $nameErr = "Only letters and white space allowed";}
+    
   }
   
   if (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["email"]);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format";}
+    }
+
+  if (empty($_POST["contact"])) {
+    $contactErr = "Contact is required";
+  } 
+  else {
+    $contact = test_input($_POST["contact"]);
+    if(!preg_match('/^[0-9]{10}+$/', $contact)) {
+      $contactErr= "Enter valid contact no <br>";}
+      
   }
 
-  if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
-  } else {
-    $gender = test_input($_POST["gender"]);
-  }
-}
+  
 
 function test_input($data) {
   $data = trim($data);
@@ -51,7 +61,7 @@ function test_input($data) {
 <h2>Government of Canada Employment form</h2> <br><br>
 <div class="container">
 <p><span class="error">* Required field</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+<form name ="myForm"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="validateForm()" method="post">  
 <!-- One field start -->
 
 <div class="row">
@@ -61,7 +71,7 @@ function test_input($data) {
     </div>
   
     <div class="col-75">
-    <input type="text"  name="name"  pattern="[A-Za-z]{5,}" placeholder="Enter your first name" autofocus required>
+    <input type="text"  name="name" pattern="[A-Za-z]{5,}" placeholder="Enter your first name" autofocus required >
          
     </div>
 
@@ -74,7 +84,7 @@ function test_input($data) {
     <label for="email">Email</label> <span class="error">* <?php echo $emailErr;?></span> 
     </div>
     <div class="col-75">
-    <input type="text" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter your Email address" required>
+    <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter your Email address" required>
     
     </div>
 </div>
@@ -86,7 +96,7 @@ function test_input($data) {
     <label for="contact">Contact No</label> <span class="error">* <?php echo $contactErr;?></span>
     </div>
     <div class="col-75" >
-    <input type="tel"  name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Enter your Contact No" size="10" required>
+    <input type="tel"  name="contact"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Enter your Contact No" size="10" required>
      
     </div>
 </div>
@@ -112,7 +122,7 @@ function test_input($data) {
     <label for="licenseno">Driver License No.</label> <span class="error">* <?php echo $licenseErr;?></span>
     </div>
     <div class="col-75">
-    <input type="text" name="licenseno" pattern= "[A-Z]{1}[0-9]{4}-[0-9]{5}-[0-9]{5}" size="15" placeholder="Enter Driver's License Number">
+    <input type="text" name="licenseno"  pattern= "[A-Z]{1}[0-9]{4}-[0-9]{5}-[0-9]{5}" size="15" placeholder="Enter Driver's License Number">
    
  </div>
 </div>
@@ -124,7 +134,7 @@ function test_input($data) {
     <label for="dob">Date of Birth</label><span class="error">* <?php echo $dobErr;?></span>
     </div>
     <div class="col-75">
-    <input type="date" name="dob" placeholder="Enter your Date of Birth" max="2004-12-31" min="1970-01-02">
+    <input type="date" name="dob" placeholder="Enter your Date of Birth" max="2004-12-31" min="1970-01-02" >
     
  </div>
 </div>
@@ -136,7 +146,7 @@ function test_input($data) {
     <label for="password1">Password </label><span class="error">* <?php echo $passwordErr;?></span>
     </div>
     <div class="col-75">
-    <input type="password" name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
+    <input type="password" name="password1"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
     
  </div>
 </div>
@@ -148,7 +158,7 @@ function test_input($data) {
     <label for="confpassword">Confirm Password </label><span class="error">* <?php echo $confpasswordErr;?></span>
     </div>
     <div class="col-75">
-    <input type="password" name="confpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirm Your Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
+    <input type="password" name="confpassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirm Your Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" >
     
  </div>
 </div>
@@ -160,7 +170,7 @@ function test_input($data) {
     <label for="postalcode">Postal Code</label> <span class="error">* <?php echo $postalcodeErr;?></span>
     </div>
     <div class="col-75">
-    <input type="text" name="postalcode" placeholder="Enter your Postal Code" pattern= "[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]">
+    <input type="text" name="postalcode" placeholder="Enter your Postal Code" pattern= "[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" >
    
  </div>
 </div>
@@ -184,7 +194,7 @@ function test_input($data) {
     <label for="uploadgovernid">Upload your Government ID</label> <span class="error">* <?php echo $uploadgovernidErr;?></span>
     </div>
     <div class="col-75">
-    <input type="file" name="uploadgovernid" accept=".jpeg,.jpg,.png">
+    <input type="file" name="uploadgovernid" id= file1 accept=".jpeg,.jpg,.png" >
    
  </div>
 </div>
@@ -218,33 +228,28 @@ function test_input($data) {
 
 </div>
 </br>
+<center>
 <?php
 echo "<h2>Your Input:</h2>";
-echo $name;
+echo "<font color=white size= 5> $name </font>";
 echo "<br>";
-echo $email;
+echo "<font color=white size= 5>$email </font>";
 echo "<br>";
-echo $contact;
+echo "<font color=white size= 5>$contact </font>";
 echo "<br>";
-echo $gender;
+echo "<font color=white size= 5>$gender </font>";
 echo "<br>";
-echo $license;
+echo "<font color=white size= 5>$licenseno </font>";
 echo "<br>";
-echo $dob;
-echo "<br>";
-echo $password;
-echo "<br>";
-echo $confpassword;
-echo "<br>";
-echo $postalcode;
-echo "<br>";
-echo $uploadresume;
-echo "<br>";
-echo $uploadgovernid;
-echo "<br>";
-echo $roles;
-echo "br>";
-?>
+echo "<font color=white size= 5>$dob </font>";
 
+echo "<font color=white size= 5>$postalcode </font>";
+echo "<br>";
+
+echo "<font color=white size= 5> $roles </font>";
+echo "<br>";
+?></center>
+<script type= text/javascript src="javascript.js"></script>
 </body>
+
 </html>
