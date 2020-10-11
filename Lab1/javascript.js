@@ -83,7 +83,46 @@ function validateForm()
         isValid = false;
     }        
            
+    if( document.myForm.postalcode.value == "" || document.myForm.postalcode.value.length != 6)  {
+        alert( "Please provide your Postal Code in this format ######" );
+        document.myForm.postalcode.focus() ;
+        isValid = false;
+    }
     
+     if( document.myForm.uploadresume.value == "" ) {
+        alert( "Please upload your Resume!" );
+        document.myForm.uploadresume.focus() ;
+        isValid = false;
+    }
+    
+    if( document.myForm.uploadgovernid.value == "" ) {
+        alert( "Please upload your Government ID!" );
+        document.myForm.uploadgovernid.focus() ;
+        isValid = false;
+    }
+                           
+                           
+    var fi = document.getElementById('file1');
+    // Check if any file is selected.
+    if (fi.files.length > 0) {
+        for (const i = 0; i <= fi.files.length - 1; i++) {
+                 
+            const fsize = fi.files.item(i).size;
+            const file = Math.round((fsize / 1024));
+            // The size of the file.
+            if (file >= 1) {
+                 alert("File too Big, please select a file less than 1kb");
+                 isValid = false;
+            } else if (file < 0) {
+                alert("File too small, please select a file greater than 0kb");
+                isValid = false;
+            } else {
+                document.getElementById('size').innerHTML = '<b>' + file + '</b> KB';
+            }
+        }
+    }
+    
+    return isValid;
     
 }                           
    

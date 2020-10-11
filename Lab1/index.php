@@ -73,7 +73,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
   }
 
-  
+  if (empty($_POST["password1"])) {
+    $passwordErr = "Password is required";
+  } else {
+    $password1 = test_input($_POST["password1"]);
+    if (strlen($_POST["password1"]) <= '8') {
+      $passwordErr = "Your Password Must Contain At Least 8 Characters!";
+  }
+  elseif(!preg_match("#[0-9]+#",$password1)) {
+      $passwordErr = "Your Password Must Contain At Least 1 Number!";
+  }
+  elseif(!preg_match("#[A-Z]+#",$password1)) {
+      $passwordErr = "Your Password Must Contain At Least 1 Capital Letter!";
+  }
+  elseif(!preg_match("#[a-z]+#",$password1)) {
+      $passwordErr = "Your Password Must Contain At Least 1 Lowercase Letter!";
+  }
+  }
+
+  if (empty($_POST["confpassword"])) {
+    $confpasswordErr = "Confirm password is required";
+  } else {
+    $confpassword = test_input($_POST["confpassword"]);
+    if ($_POST["password1"] != $_POST["confpassword"]){
+      $confpasswordErr = "Password must be same";
+    }
+  }
+
+
+  if (empty($_POST["postalcode"])) 
+  {
+    $postalcodeErr = "Postal Code is required";
+  } 
+  else
+  {
+    $postalcode = test_input($_POST["postalcode"]);
+    $postalip = strlen($postalcode);
+    if(!preg_match('/[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]/', $postalcode)) 
+    {
+        $postalcodeErr="Should have ABC DEF format";
+    }
+    elseif($postalip > 7)
+    {
+      $postalcodeErr="Enter valid Postal Code";
+    }
+  }
+
+  if (empty($_POST["uploadresume"])) {
+    $uploadresumeErr = "Resume is required";
+  } else {
+    $uploadresume = test_input($_POST["uploadresume"]);
+  }
+
   $file_extension = "";
   $allowed_image_extension = array(
     "png",
