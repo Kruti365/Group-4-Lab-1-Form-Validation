@@ -48,7 +48,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
   }
 
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+
+ 
+  if (empty($_POST["licenseno"])) {
+    $licenseErr = "License No is required";
+  } else {
+    $licenseno = test_input($_POST["licenseno"]);
+    $licenseip = strlen($licenseno);
+    if($licenseip > 15){
+      $licenseErr="Enter valid License no";
+    }
+  }
+ 
+
+  if (empty($_POST["dob"])) {
+    $dobErr = "Date of Birth is required";
+  } else {
+    $dob = test_input($_POST["dob"]);    
+      
+  }
+
   
+  $file_extension = "";
+  $allowed_image_extension = array(
+    "png",
+    "jpg",
+    "jpeg");
+  if (empty($_POST["uploadgovernid"])) {
+    $uploadgovernidErr = "Government Id is required";
+  } else {
+    $uploadgovernid = test_input($_POST["uploadgovernid"]);
+    if (!in_array($file_extension, $allowed_image_extension))
+    {
+      $uploadgovernidErr = "upload is not valid" ;
+    }
+  }
+
+  if (empty($_POST["roles"])) {
+    $rolesErr = "Roles is required";
+  } else {
+    $roles = test_input($_POST["roles"]);
+  }
+}
 
 function test_input($data) {
   $data = trim($data);

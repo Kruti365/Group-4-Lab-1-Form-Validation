@@ -44,6 +44,45 @@ function validateForm()
      }
        
     
+    if( document.myForm.gender.value == "" ) {
+        alert( "Please provide your Gender!" );
+        document.myForm.gender.focus() ;
+        isValid = false;
+    }
+    
+     if( document.myForm.licenseno.value == "" || document.myForm.licenseno.value.length != 15 ) {
+        alert( "Please provide valid License No. !" );
+        document.myForm.licenseno.focus() ;
+        isValid = false;
+    }
+    
+    if( document.myForm.dob.value == "" ) {
+        alert( "Please provide your Date of Birth!" );
+        document.myForm.dob.focus() ;
+        isValid = false;
+    }
+    
+    var firstpassword=document.myForm.password1.value;  
+    var secondpassword=document.myForm.confpassword.value;  
+                             
+    if(firstpassword !== secondpassword) {  
+         alert("password must be same!");
+         isValid = false;
+    }
+    
+    if( document.myForm.password1.value == "" || document.myForm.password1.value.length <= 7 ) {
+        alert( "Please create a Password which contains atleast 8 characters!" );
+        document.myForm.password1.focus() ;
+        isValid = false;
+    }
+                     
+    
+     if( document.myForm.confpassword.value == ""  ) {
+        alert( "Please confirm your Password!" );
+        document.myForm.confpassword.focus() ;
+        isValid = false;
+    }        
+           
     
     
 }                           
